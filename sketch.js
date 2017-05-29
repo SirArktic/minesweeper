@@ -13,6 +13,7 @@ var cols;
 var rows;
 var w = 20;
 var over = false;
+var again;
 t=0;
 
 var totalbombs = prompt('Сколько бомб?', 10);
@@ -74,7 +75,7 @@ function gamewin() {
 if (nucleus==win) {
 over = true;
 setTimeout('alert("You won in " + t + " seconds!")', 30);
-setTimeout (function() { confirm("Еще раз?"); if (confirm) { window.location.reload(); } }, 40);
+setTimeout (function() { var again = confirm("Еще раз?"); if (again==true) { window.location.reload(); } }, 40);
 }
  }
 
@@ -88,7 +89,7 @@ function gameOver() {
   }
 over = true;
 setTimeout('alert("Game over")', 30);
-setTimeout (function() { confirm("Еще раз?"); if (confirm) { window.location.reload(); } }, 40);
+setTimeout (function() { var again = confirm("Еще раз?"); if (again==true) { window.location.reload(); } }, 40);
 //reset();
 }
 
