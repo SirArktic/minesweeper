@@ -20,6 +20,11 @@ var totalbombs = prompt('Сколько бомб?', 10);
 var dunno = prompt('Какая ширина?', 10);
 var bombsleft = totalbombs
 
+if (totalbombs > dunno*dunno) {
+setTimeout('alert("Введи нормально!")', 30);
+setTimeout (function() { window.location.reload(); } , 40);
+}
+
 window.onload = function() {
   document.getElementById('bombs').innerHTML = "Осталось " + bombsleft + " бомб";
   document.getElementById('timer').innerHTML = 'Ваше время: ' + t + ' сек.';
