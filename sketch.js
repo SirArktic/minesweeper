@@ -12,6 +12,7 @@ var grid;
 var cols;
 var rows;
 var w = 20;
+var over = false;
 t=0;
 
 var totalbombs = prompt('Сколько бомб?', 10);
@@ -68,13 +69,12 @@ function setup() {
 }
 
 
-//function reset() {
-//setTimeout(setup(), 800);
-//}
 
 function gamewin() {
 if (nucleus==win) {
+over = true;
 setTimeout('alert("You won in " + t + " seconds!")', 30);
+setTimeout (function() { confirm("Еще раз?"); if (confirm) { window.location.reload(); } }, 40);
 }
  }
 
@@ -86,8 +86,18 @@ function gameOver() {
     }
     }
   }
+over = true;
 setTimeout('alert("Game over")', 30);
+setTimeout (function() { confirm("Еще раз?"); if (confirm) { window.location.reload(); } }, 40);
 //reset();
+}
+
+
+function newgame() {
+confirm("Еще раз?");
+if (confirm) {
+window.location.reload();
+}
 }
 
 
@@ -123,9 +133,11 @@ if (mouseButton == RIGHT) {
 
 function start_timer()
     {
+    if (over !== true) {
     document.getElementById('timer').innerHTML = 'Ваше время: ' + t + ' сек.';
     t++;
-    setTimeout("start_timer()", 1000);          
+    setTimeout("start_timer()", 1000);  
+}        
 }
 
 function bombs_count()
